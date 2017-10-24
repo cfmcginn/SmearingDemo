@@ -11,7 +11,7 @@ MKDIR_BIN = mkdir -p $(PWD)/bin
 MKDIR_PDFDIR = mkdir -p $(PWD)/pdfDir
 MKDIR_OUTPUT = mkdir -p $(PWD)/output
 
-all: mkdirBin mkdirOutput mkdirPdfdir smearingDemo plotSmearing
+all: mkdirBin mkdirOutput mkdirPdfdir smearingDemo plotSmearing plotRoughParams relativeWeights
 
 mkdirBin:
 	$(MKDIR_BIN)
@@ -27,6 +27,12 @@ smearingDemo: src/smearingDemo.C
 
 plotSmearing: src/plotSmearing.C
 	$(CXX) $(CXXFLAGS) $(ROOT) -I $(PWD) -o bin/plotSmearing.exe src/plotSmearing.C
+
+plotRoughParams: src/plotRoughParams.C
+	$(CXX) $(CXXFLAGS) $(ROOT) -I $(PWD) -o bin/plotRoughParams.exe src/plotRoughParams.C
+
+relativeWeights: src/relativeWeights.C
+	$(CXX) $(CXXFLAGS) $(ROOT) -I $(PWD) -o bin/relativeWeights.exe src/relativeWeights.C
 
 clean:
 	rm *~ || true
